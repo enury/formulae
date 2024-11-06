@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Formulae Project</title>
+
+    <style>
+        body {
+            margin: 0;
+        }
+        header {
+            /*sticky header*/
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            /* styling */
+            background-color: lavender;
+            padding: 20px 10px;
+            font-family: Eagle Lake;
+            font-size: xx-large;
+        }
+        .container {
+            margin-top: 3rem;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 1140px;
+        }
+        table {
+            margin-top: 30px;
+            width: 100%;
+        }
+    </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap" rel="stylesheet">
+	
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+
+	<script>
+            $(function() {
+            Papa.parse("https://raw.githubusercontent.com/enury/formulae/refs/heads/main/data.csv", {
+              download: true,
+              skipEmptyLines: true,
+              complete: function(example) {
+              console.log(example.data)
+          $(document).ready(function () {
+              $('#datatable').DataTable({
+                  data: example.data,
+                  dataSrc:"",
+                  columns: [
+                      {title: "formula"},
+                      {title: "language"},
+                      {title: "TM"}
+                  ]
+              });
+          });
+          }
+      });
+  });        
+        </script>
+</head>
+<body>
+    <header>Formulae Project</header>
+	<div class="container">
+		
+        <table id="datatable" class="display">
+	        <thead>
+	            <tr>
+	                <th>Formula</th>
+	                <th>Language</th>
+	                <th>TM</th>
+	            </tr>
+	        </thead>
+	    </table>
+	</div>
+	
+
+</body>
+</html>
