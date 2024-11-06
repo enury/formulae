@@ -43,6 +43,7 @@
             $(function() {
             Papa.parse("https://raw.githubusercontent.com/enury/formulae/refs/heads/main/data.csv", {
               download: true,
+              header: true,
               skipEmptyLines: true,
               complete: function(example) {
               console.log(example.data)
@@ -51,9 +52,9 @@
                   data: example.data,
                   dataSrc:"",
                   columns: [
-                      {title: "formula"},
-                      {title: "language"},
-                      {title: "TM"}
+                      {data: "formula"},
+                      {data: "language"},
+                      {data: "TM"}
                   ]
               });
           });
